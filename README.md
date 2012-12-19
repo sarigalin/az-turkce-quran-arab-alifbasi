@@ -14,6 +14,7 @@ Quran translation of Mammadaliyev in Arabic Alphabet
 1.2 use
 	GNU/Linux:
 	simply clear the cache of zekr using this command and copy new translation:
+	
 	$ rm -r ~/.zekr/cache/mixed/*
 	$ cp IR-az_mammadaliyev.trans.zip ~/.zekr/text/trans/
 
