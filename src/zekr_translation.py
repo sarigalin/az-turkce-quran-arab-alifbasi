@@ -13,8 +13,8 @@ from datetime import date
 
 
 def main():
-    if len(argv) < 2:
-        exit('usage: %s quran_file' % argv[0])
+    if len(argv) < 3:
+        exit('usage: %s quran_file trans_file' % argv[0])
     charset = 'utf-8'
     
     quran_file = argv[1]
@@ -35,7 +35,8 @@ def main():
         parts = line.rpartition('|')
         surah.append(parts[2])
     
-    dest = ''.join( [ quran_file, ".trans.txt"])
+    #dest = ''.join( [ quran_file, ".trans"])
+    dest = argv[2];
     open(dest, 'w', charset).writelines(linesep.join(surah))        
 
 
