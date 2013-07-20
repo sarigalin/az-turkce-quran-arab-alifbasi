@@ -14,7 +14,7 @@ EX_TOKENS=ex_list
 cat $FILE > $SRC;
 : > mytest
 
-for FIND in لاشماق دن دان ده دا 
+for FIND in لاشماق دن دان ده دا دیر
 do
 	: > $TMP
 	TOKENS=$(grep -o " [^‌ ]*$FIND " $SRC | sort | uniq)
@@ -38,11 +38,14 @@ do
 		N=${T/$FIND/$NIM$FIND};
 		if [ ! $(grep  "^$T " $EX_TOKENS) ]   # if CH is not in excluded last characters 
 		then
-			#echo "$T --> $N"  >> mytest;
+			echo "$T --> $N"  >> mytest;
 
-			echo "$T --> $N" 
-			sed -i -e "s/$T/$N/g" $SRC;
+			#echo "$T --> $N" 
+			#sed -i -e "s/$T/$N/g" $SRC;
 		fi	
 	
 	done
 done
+
+rm $TMP $TMP2
+
