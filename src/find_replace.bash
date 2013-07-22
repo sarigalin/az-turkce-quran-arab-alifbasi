@@ -5,11 +5,13 @@ strindex() {
 }
 FIND=لار
 NIM="‌"
-EXCHARS="اآزرذدژو"
+EXCHARS="ا آ ز ر ذ د ژ و"
 FILE=../data/az_turkce_quran.txt
 SRC=.temp_quran
 TMP=.temp
 TMP2=.temp2
+EX_TOKENS=ex_list
+
 cat $FILE > $SRC;
 : > mytest
 
@@ -33,11 +35,18 @@ do
 	cat $TMP | sort | uniq > $TMP2
 
 	cat $TMP2 | while read T; 
-	do 
-		N=${T/$FIND/$NIM$FIND};
-		#echo "$T --> $N"  >> mytest;
-		
-		echo "$T --> $N" 
-		sed -i -e "s/$T/$N/g" $SRC;
+	do
+		if [ ! $(grep  "^$T " $EX_TOKENS) ]   # if CH is not in excluded last characters 
+		then 
+			N=${T/$FIND/$NIM$FIND};
+			echo "$T --> $N"  >> mytest;
+			echo "$T --> $N"
+ 
+#			sed -i -e "s/$T/$N/g" $SRC;
+		fi
 	done
 done
+
+#Clean up
+#mv $SRC $FILE
+rm $TMP $TMP2

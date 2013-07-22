@@ -35,17 +35,21 @@ do
 
 	cat $TMP2 | while read T; 
 	do 
-		N=${T/$FIND/$NIM$FIND};
+		
 		if [ ! $(grep  "^$T " $EX_TOKENS) ]   # if CH is not in excluded last characters 
 		then
-			echo "$T --> $N"  >> mytest;
+			N=${T/$FIND/$NIM$FIND};
 
-			#echo "$T --> $N" 
+			echo "$T --> $N"  >> mytest;
+			echo "$T --> $N"
+ 
 			#sed -i -e "s/$T/$N/g" $SRC;
 		fi	
 	
 	done
 done
 
+#Clean up
+#mv $SRC $FILE
 rm $TMP $TMP2
 
