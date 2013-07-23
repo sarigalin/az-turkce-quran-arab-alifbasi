@@ -7,17 +7,17 @@ strindex() {
 NIM="‌"
 EXCHARS=" ا آ ز ر ذ د ژ و ؤ"
 FILE=../data/az_turkce_quran.txt
-SRC=.temp_quran
+TMP_QURAN=.temp_quran
 TMP=.temp
 TMP2=.temp2
 EX_TOKENS=ex_list
-cat $FILE > $SRC;
+cat $FILE > $TMP_QURAN;
 : > mytest
 
 for FIND in لاشماق دن دان ده دا دیر
 do
 	: > $TMP
-	TOKENS=$(grep -o " [^‌ ]*$FIND " $SRC | sort | uniq)
+	TOKENS=$(grep -o " [^‌ ]*$FIND " $TMP_QURAN | sort | uniq)
 
 	for T in $TOKENS
 	do
@@ -43,13 +43,13 @@ do
 			echo "$T --> $N"  >> mytest;
 			echo "$T --> $N"
  
-			#sed -i -e "s/$T/$N/g" $SRC;
+			#sed -i -e "s/$T/$N/g" $TMP_QURAN;
 		fi	
 	
 	done
 done
 
 #Clean up
-#mv $SRC $FILE
-rm $TMP $TMP2
+#mv $TMP_QURAN $FILE
+rm $TMP_QURAN $TMP $TMP2
 
