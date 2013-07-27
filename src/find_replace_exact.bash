@@ -14,7 +14,7 @@ EX_TOKENS=ex_list
 cat $FILE > $TMP_QURAN;
 : > mytest
 
-for FIND in لاشماق دن دان ده دا دیر
+for FIND in لاشماق دن دان ده دا دیر 
 do
 	: > $TMP
 	TOKENS=$(grep -o " [^‌ ]*$FIND " $TMP_QURAN | sort | uniq)
@@ -51,5 +51,5 @@ done
 
 #Clean up
 #mv $TMP_QURAN $FILE
-rm $TMP_QURAN $TMP $TMP2
+rm $TMP $TMP2
 
