@@ -14,7 +14,7 @@ EX_TOKENS=ex_list
 cat $FILE > $TMP_QURAN;
 : > mytest
 
-for FIND in لاشماق دن دان ده دا دیر 
+for FIND in لاشماق دن دان ده دا دیر له
 do
 	: > $TMP
 	TOKENS=$(grep -o " [^‌ ]*$FIND " $TMP_QURAN | sort | uniq)
@@ -36,7 +36,7 @@ do
 	cat $TMP2 | while read T; 
 	do 
 		
-		if [ ! $(grep  "^$T " $EX_TOKENS) ]   # if CH is not in excluded last characters 
+		if [ ! $(grep  "^$T " $EX_TOKENS) ] && [ ${#T} -ge 5 ];   # if CH is not in excluded last characters 
 		then
 			N=${T/$FIND/$NIM$FIND};
 
