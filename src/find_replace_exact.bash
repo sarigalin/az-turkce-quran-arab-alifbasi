@@ -50,6 +50,6 @@ do
 done
 
 #Clean up
-#mv $TMP_QURAN $FILE
-rm $TMP $TMP2
+#cp $TMP_QURAN $FILE
+rm $TMP $TMP2 $TMP_QURAN
 
